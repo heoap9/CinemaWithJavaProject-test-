@@ -2,7 +2,7 @@
 // then press Enter. You can now see whitespace characters in your code.
 
 import  Movie.DefaultMovie;
-import  User.Guest;
+import  User.Member;
 
 import java.util.Scanner;
 
@@ -11,15 +11,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("췌아!");
 
-        Guest u1 = new Guest("성근","1234");
-
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
 
         switch (input.charAt(0)){
             case'1':  /*회원메뉴 구축*/ //가입,로그인
-                    /*예매*/ //회원 로그인이 완료 된 상태에서 가능
+                       /*예매*/ //회원 로그인이 완료 된 상태에서 가능
 
                 break;
             case'2': /*영화 메뉴*/ //영화 조회 상영편,영화제목 남은 좌석수
@@ -30,6 +28,9 @@ public class Main {
                 break;
             default:
                 System.out.println("잘못입력하셨습니다");
+
+
+
         }
 
 
