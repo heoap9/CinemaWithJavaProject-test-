@@ -4,6 +4,8 @@ public class Member {
     public String id;
     public String pw;
     public int money;
+    public String haveticket;
+
 
     public Member(String id, String pw){
         this.id = id;
@@ -17,18 +19,20 @@ public class Member {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode(){ //id 값을 비교하여 같은 값이 저장된다면 저장시키지 않는다.
 
-        return id.hashCode()+pw.hashCode()+money;
+        return id.hashCode();
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(obj instanceof Member target) {
-            return target.id.equals(id);
-        }else{
-            return false;
+    public boolean equals(Object obj) { //id의 문자열 자체를 비교하여 값이 다르다면 저장시키지 않는다.
+        if (this == obj) {
+            return true;
         }
+        if (obj instanceof Member target) {
+            return id.equals(target.id);
+        }
+        return false;
     }
 
 

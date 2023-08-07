@@ -4,10 +4,13 @@ import java.util.HashSet;
 import java.util.*;
 
 public class MakeGuest {
-    Set<Member> set = new HashSet<Member>();
-
-    public void setMember (Member member){
-        set.add (new Member(member.id, member.pw,member.money));
+    public static Set<Member> set = new HashSet<Member>();
+    public static int setMember(Member member){
+        if(set.add (member)){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
 
