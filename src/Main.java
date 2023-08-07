@@ -18,20 +18,19 @@ public class Main {
 
 
         switch (input.charAt(0)){
-            case'1':
+            case'1':  /*회원메뉴 구축*/ //가입,로그인
+                    /*예매*/ //회원 로그인이 완료 된 상태에서 가능
 
                 break;
-            case'2':
+            case'2': /*영화 메뉴*/ //영화 조회 상영편,영화제목 남은 좌석수
                 break;
-            case'3':
-                break;
-            case'4':
+
+            case'4': /*종료*/
+                System.out.println("종료합니다");
                 break;
             default:
                 System.out.println("잘못입력하셨습니다");
         }
-        System.out.println(u1.id);
-
 
 
 
