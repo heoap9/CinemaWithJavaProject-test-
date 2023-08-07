@@ -3,7 +3,7 @@
 
 import  Movie.DefaultMovie;
 import  User.Guest;
-
+import  java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +13,17 @@ public class Main {
 
 
         System.out.println(u1.id);
+
+        /** 처음 메인화면**/
+
+        System.out.println("========================================================");
+        System.out.println("메인메뉴");
+        System.out.println("========================================================");
+
+
+        Scanner scanner = new Scanner(System.in);
+        String number = scanner.nextLine();
+        int num = Integer.parseInt(number);
 
 
 
