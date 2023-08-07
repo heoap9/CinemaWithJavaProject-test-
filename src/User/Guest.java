@@ -1,11 +1,11 @@
 package User;
 
 public class Guest {
-    String id;
-    String pw;
-    int money;
+    public String id;
+    public String pw;
+    public int money;
 
-    Guest(String id,String pw){
+    public Guest(String id, String pw){
         this.id = id;
         this.pw = pw;
     }

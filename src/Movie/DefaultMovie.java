@@ -5,7 +5,7 @@ public class DefaultMovie {
     int movieprice;
     boolean[][]movieseat;
 
-    DefaultMovie(String moviename,int movieprice){
+    public DefaultMovie(String moviename,int movieprice){
         this.moviename = moviename;
         this.movieprice = movieprice;
     }
