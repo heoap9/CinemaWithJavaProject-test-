@@ -1,52 +1,30 @@
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 
-import  Movie.DefaultMovie;
-import User.FindGuest;
-import User.MakeGuest;
-import User.Member;
+import Movie.DefaultMovie;
+import User.*;
+import Menu.*;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
-import java.util.Set;
 
 
 public class Main {
     public static void main(String[] args) {
-
-
-
-
-        Member Accountsave;
+        Member Accountsave; //계정 정보 저장을 위한 변수
         boolean select = true;
         boolean select1 = true;
+
+        Scanner scanner = new Scanner(System.in);
+        String input;
+
         while (select1) {
-            System.out.println("┌───────────── 하이영화관 ─────────┐");
-            System.out.println("│                                │");
-            System.out.println("│           1.로그인              │");
-            System.out.println("│           2.상영중인 영화        │");
-            System.out.println("│                                │");
-            System.out.println("└────────────────────────────────┘");
-            System.out.print("메뉴 선택 ->  ");
-
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
-
-
+            Menu.mainMenu();
+            input = scanner.nextLine();
             switch (input.charAt(0)) {
-                case '1': /**로그인 메뉴**/
-                    /**진입시 회원가입,로그인 창으로 진입**/
+                case '1':   /**로그인 메뉴**/
+                            /**진입시 회원가입,로그인 창으로 진입**/
                     while (select) {
-                        System.out.println("┌───────────── 로그인    ─────────┐");
-                        System.out.println("│                                │");
-                        System.out.println("│           1.로그인              │");
-                        System.out.println("│          2.회원가입             │");
-                        System.out.println("│          3.종료             │");
-                        System.out.println("│                                │");
-                        System.out.println("└────────────────────────────────┘");
-                        System.out.print("메뉴 선택 ->  ");
-
+                        Menu.loginMenu();
                         scanner = new Scanner(System.in);
                         input = scanner.nextLine();
                         switch (input.charAt(0)) {
@@ -122,22 +100,6 @@ public class Main {
 
             }
         }
-        /*
 
-        Member member2 = new Member("tuarmsdl","1234",2000);
-
-        MakeGuest.setMember(member1);
-
-        Iterator<Member> iterator = MakeGuest.iterator;
-        MakeGuest.setMember(member2);
-
-        if (iterator.hasNext()) {
-            System.out.println(iterator.next().id);
-        }
-
-        if (iterator.hasNext()) {
-            System.out.println(iterator.next().id);
-        }
-    }*/
     }
 }
