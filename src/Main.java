@@ -1,9 +1,10 @@
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
-
 import  Movie.DefaultMovie;
 import  User.Guest;
-import  java.util.Scanner;
+
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -11,22 +12,25 @@ public class Main {
 
         Guest u1 = new Guest("성근","1234");
 
-
-        System.out.println(u1.id);
-
-        /** 처음 메인화면**/
-
-        System.out.println("========================================================");
-        System.out.println("메인메뉴");
-        System.out.println("========================================================");
-
-
         Scanner scanner = new Scanner(System.in);
-        String number = scanner.nextLine();
-        int num = Integer.parseInt(number);
+        String input = scanner.nextLine();
 
 
+        switch (input.charAt(0)){
+            case'1':  /*회원메뉴 구축*/ //가입,로그인
 
+                 /*예매*/ //회원 로그인이 완료 된 상태에서 가능
+
+                break;
+            case'2': /*영화 메뉴*/ //영화 조회 상영편,영화제목 남은 좌석수
+                break;
+
+            case'4': /*종료*/
+                System.out.println("종료합니다");
+                break;
+            default:
+                System.out.println("잘못입력하셨습니다");
+        }
 
     }
 }
