@@ -20,7 +20,6 @@ public class Member {
 
     @Override
     public int hashCode(){ //id 값을 비교하여 같은 값이 저장된다면 저장시키지 않는다.
-
         return id.hashCode();
     }
 
