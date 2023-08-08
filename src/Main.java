@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Member Accountsave; //계정 정보 저장을 위한 변수
+        Member Accountsave = null; //계정 정보 저장을 위한 변수
         boolean select = true;
         boolean select1 = true;
 
@@ -18,11 +18,12 @@ public class Main {
         String input;
 
         while (select1) {
-            Menu.mainMenu();
+            Menu.mainMenu(Accountsave);
             input = scanner.nextLine();
             switch (input.charAt(0)) {
                 case '1':   /**로그인 메뉴**/
                             /**진입시 회원가입,로그인 창으로 진입**/
+                            select = true;
                     while (select) {
                         Menu.loginMenu();
                         scanner = new Scanner(System.in);
@@ -36,8 +37,10 @@ public class Main {
                                 String id = scanner.nextLine();
                                 System.out.print("PASSWORD : ");
                                 String pw = scanner.nextLine();
-                                FindGuest.FindAccount(id, pw);
-
+                                Accountsave = FindGuest.FindAccount(id, pw);
+                                if(Accountsave != null){
+                                    select =false;
+                                }
                                 break;
                             case '2':
                                 System.out.println("회원가입");
@@ -47,8 +50,7 @@ public class Main {
                                 id = scanner.nextLine();
                                 System.out.print("PASSWORD : ");
                                 pw = scanner.nextLine();
-                                Accountsave = new Member(id, pw);
-                                MakeGuest.setMember(Accountsave);
+                                MakeGuest.setMember(new Member(id, pw));
                                 break;
                             case '3':
                                 System.out.println("이전 화면으로 돌아갑니다");
