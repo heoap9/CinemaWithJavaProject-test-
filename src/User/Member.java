@@ -10,12 +10,13 @@ public class Member {
     public Member(String id, String pw){
         this.id = id;
         this.pw = pw;
+        this.money = 100000;
     }
 
     public Member(String id,String pw,int money){
         this.id = id;
         this.pw = pw;
-        this.money = money;
+        this.money = 20000;
     }
 
     @Override
