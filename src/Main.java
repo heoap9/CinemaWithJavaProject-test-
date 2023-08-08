@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Member Accountsave = null; //계정 정보 저장을 위한 변수
+        //테스트용 코드
+        Accountsave = new Member("a","a");
         Movie movie1 = new Movie("어벤져스", 10000);
         boolean select = true;
         boolean select1 = true;
@@ -19,8 +21,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String input = null;
-
-        Menu.movieMenu(movie1);
+        String input1 = null;
 
         while (select1) {
 
@@ -31,21 +32,11 @@ public class Main {
                 Menu.mainMenu(Accountsave);
                 input = scanner.nextLine();
                 switch (input.charAt(0)) {
-                    /*
-                                System.out.println("│           1.영화 예매            │");
-                                System.out.println("│           2.영화 예매 취소        │");
-                                System.out.println("│           3.영화 예매 확인        │");
-                                System.out.println("│           4.로그아웃             │");
-
-                     */
                     case '1':
                         Menu.movieMenu(movie1);
                         System.out.println("좌석을 선택해주세요");
-                        input = scanner.nextLine();
-
-                        MoviePution.BuyTiket(Accountsave, movie1, input);
-                        System.out.println(Accountsave.haveticket);
-
+                        input1 = scanner.nextLine();
+                        MovieFunction.BuyTiket(Accountsave, movie1, input1);
                         break;
 
                     case '2':
@@ -56,6 +47,7 @@ public class Main {
                         break;
                     case '4':
                         Accountsave= null;
+                        input =null;
                         break;
 
                 }

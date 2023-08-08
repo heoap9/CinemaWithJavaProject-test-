@@ -1,9 +1,0 @@
-movie 기능
-
-
-movieseat = new boolean[row][column];
-        for(int i = 0; i <row; i++){
-            for(int j = 0; j<column; j++){
-                movieseat[i][j] = false;
-            }
-        }
