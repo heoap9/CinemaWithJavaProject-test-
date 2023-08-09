@@ -1,6 +1,4 @@
-package Movie;
-
-import User.Member;
+package movie;
 
 /**
  * 영화 정보를 저장하기 위한 클래스!

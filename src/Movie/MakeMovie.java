@@ -1,10 +1,7 @@
-package Movie;
-
-import User.Member;
+package movie;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class MakeMovie {
     public static List<Movie> list = new LinkedList<Movie>();

@@ -1,14 +1,15 @@
-package Movie;
+package movie;
 
-import Menu.Menu;
-import User.Member;
+import menu.Menu;
+import tiket.Tiket;
+import user.Member;
 import java.util.*;
-import User.MakeMember;
-import User.Userinfo;
+import user.MakeMember;
+import user.Userinfo;
 
 public class MovieFunction {
 
-    public static  boolean returnTiket(Member member, Movie movie,String input){
+    /*public static  boolean returnTiket(Member member, Movie movie,String input){
         //고객이 보유하고 있는 티켓을 확인하여 영화이름을 대조,
         //해당되는 영화의 좌석을 false값으로 다시 만들어 둔 뒤
         //고객의 티켓을 삭제,환불 처리를 진행한다
@@ -55,7 +56,7 @@ public class MovieFunction {
 
         }  return false;
 
-    }
+    }*/
 
     /**
      * @param member //사용자의 정보를 넘겨받아,사용자의 소유 금액 및 티켓 발급을 위한 매개값으로 사용한다
@@ -66,11 +67,12 @@ public class MovieFunction {
     public static boolean BuyTiket(Member member, Movie movie,String input) { //티켓 구매시 처리되는 명령
 
         if (member.money >= movie.movieprice) { //고객이 소유한 금액이 영화 티켓의 가격보다 적다면 반환값을 false로 처리함 (아래 else 문을 참고
-            if(!seatSelect(movie,input)){ //고객이 선택할 좌석을 선택하며 반환값 (입석되어있는 좌석을 선택했다면) false로 처리
-                return false;
-            }
+
+            Tiket tiket = new Tiket();
+            seatSelect(movie,input,tiket);
+            member.list.add(tiket);
             movie.movieseatprec --; //입석수 차감
-            member.haveticket += movie.moviename+','+ input + ','; //고객에게 티켓을 발급한다.
+            //member.haveticket += movie.moviename+','+ input + ','; //고객에게 티켓을 발급한다.
             member.money -= movie.movieprice; //영화의 가격만큼 고객의 금액을 차감한다
             Menu.movieMenu(movie); //입석이 완료된 좌석을 표시함
             return true;
@@ -104,13 +106,12 @@ public class MovieFunction {
      * @param input //사용자가 입력한 좌석의 정보를 입력받아 변환 (int)과정을 거쳐 좌석에 할당하기 위해 사용됨
      * @return //반환은 movie 좌석 업데이트가 완료된다면 반환된다
      */
-    public static boolean seatSelect(Movie movie, String input) {
+    public static boolean seatSelect(Movie movie, String input,Tiket tiket) {
         int rowprec = 0;//행
         int lowprec = 0;//열
 
         if (input.charAt(0) == 'A') {
             lowprec = getCharwithInt(input.charAt(1));
-
         } else if (input.charAt(0) == 'B') {
             lowprec = getCharwithInt(input.charAt(1));
             rowprec = 1;
@@ -137,6 +138,16 @@ public class MovieFunction {
                 return false;
             }
             movie.movieseat[rowprec][lowprec] = true;
+            tiket.row =rowprec;
+            tiket.low =lowprec;
+            StringBuilder result1 = new StringBuilder();
+            result1.append(input.charAt(0));
+            result1.append(input.charAt(1));
+
+            tiket.tiketSeatLabel = result1.toString();
+
+            tiket.moviename =movie.moviename;
+            //tiket.movieIndex =
             return true;
         }
     }

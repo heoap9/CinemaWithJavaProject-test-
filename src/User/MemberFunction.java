@@ -1,6 +1,4 @@
-package User;
-
-import java.util.Scanner;
+package user;
 
 public class MemberFunction {
     public static void MemberMoneyInput(Member member,String input){

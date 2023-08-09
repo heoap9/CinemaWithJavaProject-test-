@@ -1,6 +1,4 @@
-package User;
-
-import User.*;
+package user;
 
 public class Userinfo {
 

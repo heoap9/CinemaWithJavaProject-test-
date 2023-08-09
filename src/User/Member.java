@@ -1,10 +1,17 @@
-package User;
+package user;
+
+import tiket.Tiket;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Member {
     public String id;
     public String pw;
     public int money;
     public String haveticket;
+
+    public List<Tiket> list = new LinkedList<Tiket>();
 
 
     public Member(String id, String pw){

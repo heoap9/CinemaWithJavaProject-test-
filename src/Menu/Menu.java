@@ -1,10 +1,8 @@
-package Menu;
+package menu;
 
-import Movie.*;
-import User.Member;
-import User.*;
-
-import java.util.Scanner;
+import movie.*;
+import user.Member;
+import user.*;
 
 public class Menu {
     /**
@@ -36,7 +34,10 @@ public class Menu {
     }
     public static void movieTiketprintwithUser(Member member){ /*해당 유저가 가진 티켓의 정보를 출력함*/
         //출력
-        Userinfo.userView(member);
+        //Userinfo.userView(member);
+        for(int i = 0; i<member.list.size();i++){
+            System.out.println(member.list.get(i).moviename+member.list.get(i).tiketSeatLabel);
+        }
     }
 
     /**
