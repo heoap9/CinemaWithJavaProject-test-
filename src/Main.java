@@ -11,8 +11,14 @@ public class Main {
     public static void main(String[] args) {
         Member Accountsave = null; //계정 정보 저장을 위한 변수
         //테스트용 코드
-        Accountsave = new Member("a","a");
+        // Accountsave = new Member("a","a");
+        Movie SaveMovie = null;
         Movie movie1 = new Movie("어벤져스", 10000);
+        MakeMovie.setMovie(new Movie("엄복동",8000));
+        MakeMovie.setMovie(new Movie("무적콧털 보보보",8000));
+        MakeMovie.setMovie(new Movie("녹색전차 해모수",8000));
+        FindMovie.printMovie();
+
         boolean select = true;
         boolean select1 = true;
         String id;
@@ -55,7 +61,7 @@ public class Main {
 
 
 
-            switch (input.charAt(0)) {
+            switch (input.charAt(0)) {  //비회원 로그인 시
                 case '1':   /**로그인 메뉴**/
                     /**진입시 회원가입,로그인 창으로 진입**/
                     select = true;
@@ -85,7 +91,7 @@ public class Main {
                                 id = scanner.nextLine();
                                 System.out.print("PASSWORD : ");
                                 pw = scanner.nextLine();
-                                MakeGuest.setMember(new Member(id, pw));
+                                MakeMember.setMember(new Member(id, pw));
                                 break;
                             case '3':
                                 System.out.println("이전 화면으로 돌아갑니다");
@@ -101,23 +107,19 @@ public class Main {
 
 
                 case '2':
-                    System.out.println("");
-                    System.out.println("┌─────────── 상영중인 영화 ───────────┐");
-                    System.out.println("│                                   │");
-                    System.out.println("│           1. 어벤져스              │");
-                    System.out.println("│           2. 탑건                  │");
-                    System.out.println("│           3. 아바타                │");
-                    System.out.println("└───────────────────────────────────┘");
+                    Menu.showMovienameList();
                     System.out.print("영화 선택 ->  ");
-                    String time = scanner.nextLine();
-                    int time_num = Integer.parseInt(time);
+                    String select2 = scanner.nextLine();
+                    int select3 = Integer.parseInt(select2);
+                    scanner = new Scanner(System.in);
+                    input = scanner.nextLine();
 
-                    switch (time_num) {
+                    switch (input.charAt(0)) {
                         case 1:
                             System.out.println("");
                             System.out.println("┌─────────── 상영중 ───────────┐");
                             System.out.println("│                             │");
-                            System.out.println("│           1. 9:00           │");
+                            System.out.println(MakeMovie.list.get(select3).movietime);
                             System.out.println("│                             │");
                             System.out.println("└─────────────────────────────┘");
                             System.out.print("시간 선택 ->  ");
