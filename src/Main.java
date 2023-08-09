@@ -1,8 +1,8 @@
 /** 영화 예메 프로그램 입니다**/
 
-import Movie.*;
-import User.*;
-import Menu.*;
+import movie.*;
+import user.*;
+import menu.*;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Member Accountsave = null; //계정 정보 저장을 위한 변수
         //테스트용 코드
-        // Accountsave = new Member("a","a");
+        Accountsave = new Member("a","a");
         Movie SaveMovie = null;
         Movie movie1 = new Movie("어벤져스", 10000);
         MakeMovie.setMovie(new Movie("엄복동",8000));
