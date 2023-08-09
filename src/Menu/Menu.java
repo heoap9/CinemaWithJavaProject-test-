@@ -7,9 +7,13 @@ import User.*;
 import java.util.Scanner;
 
 public class Menu {
+    /**
+     * @param member //계정 정보를 전달받아
+     *               //로그인 및 비로그인 시 예매 정보를 출력한다
+     */
     public static void mainMenu(Member member){ /*로그인을 했을 경우와 아닌경우를 비교하여 다른 메인화면을 띄운다*/
 
-        if(member == null){
+        if(member == null){ //참조된 계정 정보 (main에서 사용되고 있는 계정정보를 입력받아서 다른 분기와, 화면을 제공한다
             System.out.println("┌─────────── 하이영화관 ───────────┐");
             System.out.println("│                                │");
             System.out.println("│           1.로그인              │");
