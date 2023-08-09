@@ -12,9 +12,23 @@ public class FindMovie {
         }
     }
 
-    public static Movie FindMovie(Movie movie){
 
-        return
+    /**
+     * @param findinput 입력값을 인덱스값으로 변환하여 입력받은
+     * @return 인덱스 값을 반환하여 movie의 주소값을 반환함!
+     */
+    public static Movie SelectFindMovie(String findinput) {
+        char inputChar = findinput.charAt(0);
+        int index = Character.getNumericValue(inputChar) - 1;
+
+        if (index < 0 || index >= MakeMovie.list.size()) {
+            return null;
+        }
+
+        return MakeMovie.list.get(index);
+    }
+    public static Movie allFindMovie(Movie movie){
+
     }
 
     }
