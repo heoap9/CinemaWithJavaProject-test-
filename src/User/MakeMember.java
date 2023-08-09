@@ -10,13 +10,14 @@ public class MakeMember {
     /**
      * @param member 컬렉션 구조를 사용하여
      *               id값이 같다면 저장되지 않게 구현한 계정 생성 메서드 이다
-     * @return      계정이 저장됬다면  return 1, 아니라면  return 0
+     * @return 계정이 저장됬다면  return 1, 아니라면  return 0
      */
-    public static int setMember(Member member){
+    public static boolean setMember(Member member){
+        member.money += 3000;
         if(set.add (member)){
-            return 1;
+            return true;
         }else{
-            return 0;
+            return false;
         }
     }
 
