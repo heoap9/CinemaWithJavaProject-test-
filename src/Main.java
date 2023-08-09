@@ -17,6 +17,7 @@ public class Main {
         MakeMovie.setMovie(new Movie("엄복동",8000));
         MakeMovie.setMovie(new Movie("무적콧털 보보보",8000));
         MakeMovie.setMovie(new Movie("녹색전차 해모수",8000));
+        MakeMovie.setMovie(new Movie("녹색전차 해모수",8000,"08:00"));
         FindMovie.printMovie();
 
         boolean select = true;
@@ -108,24 +109,20 @@ public class Main {
 
                 case '2':
                     Menu.showMovienameList();
-                    System.out.print("영화 선택 ->  ");
-                    String select2 = scanner.nextLine();
-                    int select3 = Integer.parseInt(select2);
-                    scanner = new Scanner(System.in);
-                    input = scanner.nextLine();
-
-                    switch (input.charAt(0)) {
-                        case 1:
-                            System.out.println("");
-                            System.out.println("┌─────────── 상영중 ───────────┐");
-                            System.out.println("│                             │");
-                            System.out.println(MakeMovie.list.get(select3).movietime);
-                            System.out.println("│                             │");
-                            System.out.println("└─────────────────────────────┘");
-                            System.out.print("시간 선택 ->  ");
+                    System.out.println("영화선택:-->");
+                    input1 = scanner.nextLine();
+                    SaveMovie = FindMovie.SelectFindMovie(input1);
+                    System.out.println();
+                    System.out.println("┌─────────── 상영중 ───────────┐");
+                    System.out.println("│                             │");
+                    System.out.println(SaveMovie.movietime); //해당되는 영화의
+                    // 모든 시간을 출력해야함 (메서드 구현)
+                    System.out.println("│                             │");
+                    System.out.println("└─────────────────────────────┘");
+                    System.out.print("시간 선택 ->  ");
 
 
-                    }
+                    break;
 
 
                 case '3':
