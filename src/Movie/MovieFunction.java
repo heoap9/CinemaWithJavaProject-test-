@@ -22,39 +22,44 @@ public class MovieFunction {
 
         String value = "y";
         String no = "n";
+        //유저의 티켓에서
+        //영화 제목에서 확인
+        //그 영화의 저장된 객체를 따라가서 해당된 좌석을 false로 전환 하고
+        //유저의 티켓을 삭제 해야 함
 
         Scanner scanner = new Scanner(System.in);
 
-        //고객의 티켓 내역에서 삭제 하려면 ?.?
-        Userinfo.userView(member);      //예매 되어 있는 고객의 티켓 정보를 보여줌.
+        if(userTicket == null){
+            System.out.println("예매 내역이 없습니다.");
+            return false;
+        }
 
-        System.out.println("취소 하실 영화를 선택 하세요");
-        String input2 = scanner.nextLine();
+        Userinfo.userView(member);      //예매 되어 있는 고객의 티켓 정보를 보여줌.
 
         System.out.println("예매를 취소 하시겠습니까? y / n");
         String input1 = scanner.nextLine();
 
-        if(input.equals(value)){          //y / n 입력 값을 받아서 아래 내용이 실행 되게 함.
+        if(input1.equals(value)){          //y / n 입력 값을 받아서 아래 내용이 실행 되게 함.
 
             if(MakeMember.set.contains(userTicket)){
+                System.out.println("예매한 영화명을 입력하세요: ");
+                String cancelMovieName = scanner.nextLine();
 
-                  movie.movieseat[rowprec][lowprec] = false;    //검색된 티켓을 false 값으로 초기화 시켜 취소
-                  System.out.println(userid +"님의 예매 취소가 완료 되었습니다.");
-                  ++movie.movieseatprec;    //상영관의 남은 좌석 수를 다시 추가
-                  remoney += moviem;   //고객의 소지금에 환불금을 더해서 리턴 합니다.
-                  member.money = remoney;
+                if (cancelMovieName.equals()) {
+                    movie.movieseat = new boolean[movie.][movie.col]; // 해당 영화의 좌석을 초기화
+                    System.out.println(userid + "님의 예매 취소가 완료되었습니다.");
+                    ++movie.movieseatprec; // 상영관의 남은 좌석 수를 다시 추가
+                    remoney += moviem; // 고객의 소지금에 환불금을 더해서 리턴
+                    member.money = remoney;
 
-                  return true;
+                    return true;
 
                 }  else if (input.equals(no)){
                     System.out.println("취소하셨습니다.");
                     System.out.println(userid + "님의 예매 내역 " + userTicket);
 
                    }
-        } else {
-            System.out.println("예매 내역을 찾을 수 없습니다.");
-
-        }  return false;
+        }
 
     }*/
 
