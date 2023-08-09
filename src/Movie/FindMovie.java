@@ -1,4 +1,4 @@
-package Movie;
+package movie;
 
 public class FindMovie {
 
@@ -9,8 +9,11 @@ public class FindMovie {
         //set 컬렉션에 저장된 값을 불러오며 member주소를 가리키게 한다
         for (int i = 0 ;i<MakeMovie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
             System.out.println("\t\t"+(i+1)+"." +MakeMovie.list.get(i).moviename);
+            //if(savemoviename.equals(MakeMovie.list.get(i),name)){
+                //티켓 컬렉션
+            }
         }
-    }
+
 
 
     /**
@@ -27,9 +30,10 @@ public class FindMovie {
 
         return MakeMovie.list.get(index);
     }
-    public static Movie allFindMovie(Movie movie){
+    //public static Movie allFindMovie(Movie movie){
+        
+    //}
 
     }
 
-    }
 
