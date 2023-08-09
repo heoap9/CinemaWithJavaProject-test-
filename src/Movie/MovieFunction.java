@@ -5,6 +5,20 @@ import User.Member;
 
 public class MovieFunction {
 
+    public static  boolean returnTiket(){
+        //고객이 보유하고 있는 티켓을 확인하여 영화이름을 대조,
+        //해당되는 영화의 좌석을 false값으로 다시 만들어 둔 뒤
+        //고객의 티켓을 삭제,환불 처리를 진행한다
+        int a = 10;
+        return true;
+    }
+
+    /**
+     * @param member //사용자의 정보를 넘겨받아,사용자의 소유 금액 및 티켓 발급을 위한 매개값으로 사용한다
+     * @param movie //영화 정보를 넘겨받아 해당되는 정보를 가지고 처리한다(영화이름,영화 가격 등)
+     * @param input //사용자가 어떠한 좌석을 선택하는지 입력받는다
+     * @return //정상적으로 티켓 발급이 되었는지를 확인하여 리턴한다
+     */
     public static boolean BuyTiket(Member member, Movie movie,String input) { //티켓 구매시 처리되는 명령
 
         if (member.money >= movie.movieprice) { //고객이 소유한 금액이 영화 티켓의 가격보다 적다면 반환값을 false로 처리함 (아래 else 문을 참고
@@ -22,6 +36,10 @@ public class MovieFunction {
         }
     }
 
+    /**
+     * @param c //특정 문자를 입력받기 위해 사용한다
+     * @return //반환값은 int값으로 변환되어 리턴된다
+     */
     public static int getCharwithInt(char c) { //입력값이 만약 A10 이거나 A0를 사용하게되면 고객이 보여지는 메뉴와는 다른 선택방식으로
                                                 //입력되어 원하지 않는 좌석이 입력되는 문제가 있음 (무조건  A0 으로 입력된다!)
         //문자열을 정수형으로 반환하는 함수이며
@@ -37,6 +55,11 @@ public class MovieFunction {
     }
 
 
+    /**
+     * @param movie //영화의 정보를 넘겨받아 해당되는 객체(movie)의 좌석 정보를 변경 하기 위해 사용한다
+     * @param input //사용자가 입력한 좌석의 정보를 입력받아 변환 (int)과정을 거쳐 좌석에 할당하기 위해 사용됨
+     * @return //반환은 movie 좌석 업데이트가 완료된다면 반환된다
+     */
     public static boolean seatSelect(Movie movie, String input) {
         int rowprec = 0;//행
         int lowprec = 0;//열
