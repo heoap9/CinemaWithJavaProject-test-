@@ -1,5 +1,9 @@
 package Movie;
 
+/**
+ * 영화 정보를 저장하기 위한 클래스!
+ *  저장되는 정보는 영화이름,시간,가격,좌석,좌석에 배정된 초기값,남은 입석수 등이 제공된다
+ */
 public class Movie {
     public String moviename;
     public String movietime;
