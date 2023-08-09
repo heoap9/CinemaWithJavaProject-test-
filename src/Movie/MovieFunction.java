@@ -2,15 +2,52 @@ package Movie;
 
 import Menu.Menu;
 import User.Member;
+import java.util.*;
+import User.MakeMember;
 
 public class MovieFunction {
 
-    public static  boolean returnTiket(){
+    public static  boolean returnTiket(Member member, Movie movie, int rowprec,int lowprec){
         //고객이 보유하고 있는 티켓을 확인하여 영화이름을 대조,
         //해당되는 영화의 좌석을 false값으로 다시 만들어 둔 뒤
         //고객의 티켓을 삭제,환불 처리를 진행한다
-        int a = 10;
-        return true;
+
+        String userTicket = member.haveticket;
+        String usermovie = movie.moviename;
+        String userid = member.id;
+        int remoney = member.money;
+        int moviem = movie.movieprice;
+
+        String value = "y";
+        String no = "n";
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("예매를 취소 하시겠습니까? y / n");
+        String input = scanner.nextLine();
+
+        if(input.equals(value)){          //y / n 입력 값을 받아서 아래 내용이 실행 되게 함.
+
+            if(MakeMember.set.contains(userTicket)){
+
+                  movie.movieseat[rowprec][lowprec] = false;    //검색된 티켓을 false 값으로 초기화 시켜 취소
+                  System.out.println(userid +"님의 예매 취소가 완료 되었습니다.");
+                  remoney += moviem;   //고객의 소지금에 환불금을 더해서 리턴 합니다.
+                  member.money = remoney;
+                  member.haveticket = null; //메소드로 만들어서 삭제????
+                  return true;
+
+                }  else if (input.equals(no)){
+                    System.out.println("취소하셨습니다.");
+                    System.out.println(userid + "님의 예매 내역 " + userTicket);
+
+                   }
+        } else {
+            System.out.println("예매 내역을 찾을 수 없습니다.");
+
+        }  return false;
+
     }
 
     /**
