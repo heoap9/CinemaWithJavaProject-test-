@@ -3,6 +3,12 @@ package User;
 import java.util.Iterator;
 
 public class FindGuest {
+    /**
+     * @param id //main에서 입력받은 계정의 id값을 사용하며
+     *           //set 컬렉션에 저장된 ㄱ
+     * @param pw
+     * @return
+     */
     public static Member FindAccount(String id, String pw) {
         Iterator<Member> iterator = MakeGuest.set.iterator(); // 리터레이터 초기화
 
