@@ -1,6 +1,6 @@
 package Menu;
 
-import Movie.Movie;
+import Movie.*;
 import User.Member;
 import User.*;
 
@@ -38,6 +38,27 @@ public class Menu {
         //출력
         Userinfo.userView(member);
     }
+
+    /**
+     * 영화 정보 출력
+     */
+    public static void showMovienameList(){
+        System.out.println("");
+        System.out.println("┌─────────── 상영중인 영화 ───────────┐");
+        System.out.println("│                                   │");
+        if(MakeMovie.list.size() > 0){
+            FindMovie.printMovie();
+        }else{
+            System.out.println("\t\t상영중인 영화가 없습니다");
+        }
+        System.out.println("│                                   │");
+        System.out.println("└───────────────────────────────────┘");
+        System.out.print("영화 선택 ->  ");
+    }
+
+    /**
+     *
+     */
     public static void loginMenu(){ /*로그인 화면*/
         System.out.println("┌───────────── 로그인 ────────────┐");
         System.out.println("│                                │");
