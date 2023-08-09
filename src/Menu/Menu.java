@@ -72,6 +72,8 @@ public class Menu {
 
 
 
+
+
     public static void movieMenu(Movie movie) { /* 영화 좌석을 보여주는 메뉴 */
         System.out.println(movie.moviename);    //영화 이름 출력
         for(int i = 0; i<movie.movieseat[0].length;i++){ //열의 값을 출력함
