@@ -4,10 +4,11 @@ import Menu.Menu;
 import User.Member;
 import java.util.*;
 import User.MakeMember;
+import User.Userinfo;
 
 public class MovieFunction {
 
-    public static  boolean returnTiket(Member member, Movie movie){
+    public static  boolean returnTiket(Member member, Movie movie,String input){
         //고객이 보유하고 있는 티켓을 확인하여 영화이름을 대조,
         //해당되는 영화의 좌석을 false값으로 다시 만들어 둔 뒤
         //고객의 티켓을 삭제,환불 처리를 진행한다
@@ -23,9 +24,14 @@ public class MovieFunction {
 
         Scanner scanner = new Scanner(System.in);
 
+        //고객의 티켓 내역에서 삭제 하려면 ?.?
+        Userinfo.userView(member);      //예매 되어 있는 고객의 티켓 정보를 보여줌.
+
+        System.out.println("취소 하실 영화를 선택 하세요");
+        String input2 = scanner.nextLine();
 
         System.out.println("예매를 취소 하시겠습니까? y / n");
-        String input = scanner.nextLine();
+        String input1 = scanner.nextLine();
 
         if(input.equals(value)){          //y / n 입력 값을 받아서 아래 내용이 실행 되게 함.
 
@@ -36,11 +42,6 @@ public class MovieFunction {
                   ++movie.movieseatprec;    //상영관의 남은 좌석 수를 다시 추가
                   remoney += moviem;   //고객의 소지금에 환불금을 더해서 리턴 합니다.
                   member.money = remoney;
-
-                  //고객의 티켓 내역에서 삭제 하려면 ?.?
-                String[] arr = userTicket.split(",");
-                
-
 
                   return true;
 
@@ -69,7 +70,7 @@ public class MovieFunction {
                 return false;
             }
             movie.movieseatprec --; //입석수 차감
-            member.haveticket += input +','+movie.moviename+','; //고객에게 티켓을 발급한다.
+            member.haveticket += movie.moviename+','+ input + ','; //고객에게 티켓을 발급한다.
             member.money -= movie.movieprice; //영화의 가격만큼 고객의 금액을 차감한다
             Menu.movieMenu(movie); //입석이 완료된 좌석을 표시함
             return true;
