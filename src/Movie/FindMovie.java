@@ -1,17 +1,21 @@
 package movie;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class FindMovie {
 
     public static void printMovie() {
-        // 리터레이터 초기화
-        //list 컬렉션 사용을 간단하게 사용하기 위해 사용한 리터레이터
+            Set<String> namelist = new HashSet<>();
+            //set 컬렉션에 저장된 값을 불러오며 member주소를 가리키게 한다
+            for (int i = 0 ;i<MakeMovie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
+                namelist.add(MakeMovie.list.get(i).moviename);
+                }
 
-        //set 컬렉션에 저장된 값을 불러오며 member주소를 가리키게 한다
-        for (int i = 0 ;i<MakeMovie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
-            System.out.println("\t\t"+(i+1)+"." +MakeMovie.list.get(i).moviename);
-            //if(savemoviename.equals(MakeMovie.list.get(i),name)){
-                //티켓 컬렉션
-            }
+        int i = 1;
+        for (String movieName : namelist) {
+            System.out.println("\t\t" + (i++) + ". " + movieName);
+        }
         }
 
 
