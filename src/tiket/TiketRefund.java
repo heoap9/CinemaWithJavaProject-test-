@@ -12,7 +12,5 @@ public class TiketRefund {
         member.money -= movie.movieprice;
         member.tiketsList.remove(a);
         System.out.println("환불완료오!");
-
-
     }
 }

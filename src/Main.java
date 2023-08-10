@@ -8,15 +8,15 @@ import user.*;
 import menu.*;
 
 import java.util.Scanner;
+import java.io.Console;
 
 
 public class Main {
     public static void main(String[] args) {
         Member Accountsave = null; //계정 정보 저장을 위한 변수
-        Member Accountsave1 = null;
-        //테스트용 코드
-        //Accountsave = new Member("a", "a");
-        Movie SaveMovie = null;
+        // 테스트 코드
+        Accountsave = new Member("a", "a");
+        Movie SaveMovie = null; //영화 정보 저장을 위한 변수
         MakeMovie.setMovie(new Movie("엄복동", 8000));
         MakeMovie.setMovie(new Movie("무적콧털 보보보", 8000));
         MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000));
@@ -31,10 +31,10 @@ public class Main {
         String input1 = null;
 
         while (true) {
-            if (Accountsave1 == null) {
-                Accountsave1 = showNonMemberMenu(Accountsave,SaveMovie,scanner);
+            if (Accountsave == null) {
+                Accountsave = showNonMemberMenu(Accountsave,SaveMovie,scanner);
             } else {
-                Accountsave1 = showMainMenu(Accountsave1,SaveMovie,scanner);
+                Accountsave = showMainMenu(Accountsave,SaveMovie,scanner);
             }
         }
     }
@@ -42,6 +42,8 @@ public class Main {
     private static Member showNonMemberMenu(Member accountsave, Movie saveMoive, Scanner scanner) {
         Menu.mainMenu(accountsave);
         String input = scanner.nextLine();
+        String id;
+        String pw;
         switch (input.charAt(0)) {
             case '1':
                 Menu.loginMenu();
@@ -52,9 +54,9 @@ public class Main {
                         System.out.println();
                         System.out.println("LOGIN");
                         System.out.print("ID : ");
-                        String id = scanner.nextLine();
+                        id = scanner.nextLine();
                         System.out.print("PASSWORD : ");
-                        String pw = scanner.nextLine();
+                        pw = scanner.nextLine();
                         accountsave = FindGuest.FindAccount(id, pw);
                         if (accountsave != null) {
                             return accountsave;
@@ -143,6 +145,7 @@ public class Main {
                 System.out.println("적립금 입금 메뉴 입니다");
                 System.out.println("얼마를 입금하시겠습니까?");
                 System.out.println("->");
+                input = scanner.nextLine();
                 MemberFunction.MemberMoneyInput(accountSave, input);
                 break;
             case '5':
