@@ -12,8 +12,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Member Accountsave = null; //계정 정보 저장을 위한 변수
+        Member Accountsave1 = null;
         //테스트용 코드
-        Accountsave = new Member("a", "a");
+        //Accountsave = new Member("a", "a");
         Movie SaveMovie = null;
         Movie movie1 = new Movie("어벤져스", 10000);
         MakeMovie.setMovie(new Movie("엄복동", 8000));
@@ -21,8 +22,6 @@ public class Main {
         MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000));
         MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000, "08:00"));
 
-        boolean select = true;
-        boolean select1 = true;
         String id;
         String pw;
 
@@ -32,22 +31,63 @@ public class Main {
         String input1 = null;
 
         while (true) {
-            if (Accountsave == null) {
-                showNonMemberMenu(Accountsave,SaveMovie,scanner);
+            if (Accountsave1 == null) {
+                Accountsave1 = showNonMemberMenu(Accountsave,SaveMovie,scanner);
             } else {
-                showMainMenu(Accountsave,SaveMovie,scanner);
+                Accountsave1 = showMainMenu(Accountsave1,SaveMovie,scanner);
             }
         }
     }
 
-    private static void showNonMemberMenu(Member accountsave, Movie saveMoive, Scanner scanner){
+    private static Member showNonMemberMenu(Member accountsave, Movie saveMoive, Scanner scanner) {
+        Menu.mainMenu(accountsave);
         String input = scanner.nextLine();
         switch (input.charAt(0)) {
             case '1':
-                // 로그인 메뉴
-                // ...
+                Menu.loginMenu();
+                input = scanner.nextLine();
+                switch (input.charAt(0)) {
+                    case '1': //로그인
+                        System.out.println("로그인");
+                        System.out.println();
+                        System.out.println("LOGIN");
+                        System.out.print("ID : ");
+                        String id = scanner.nextLine();
+                        System.out.print("PASSWORD : ");
+                        String pw = scanner.nextLine();
+                        accountsave = FindGuest.FindAccount(id, pw);
+                        if (accountsave != null) {
+                            return accountsave;
+                        }
+                        break;
+                    case '2':
+                        System.out.println("회원가입");
+                        System.out.println();
+                        System.out.println("LOGIN");
+                        System.out.print("ID : ");
+                        id = scanner.nextLine();
+                        System.out.print("PASSWORD : ");
+                        pw = scanner.nextLine();
+                        if (MakeMember.setMember(new Member(id, pw))) {
+                            System.out.println("회원가입을 축하드립니다!");
+                            System.out.println("회원가입 축하금으로 3000포인트를 입금해드립니다");
+                        }
+                        break;
+                    case '3':
+                        System.out.println("종료합니다");
+                        return null;
+                    default:
+                        System.out.println("잘못입력하셨습니다");
+                        break;
+
+
+                }
+
                 break;
             case '2':
+                int a = Menu.showMovienameList(scanner);
+                Movie saveMovie = Menu.showMovieTimeListandSelect(a, scanner);
+                Menu.movieMenu(saveMovie);
                 // 영화 선택 메뉴
                 // ...
                 break;
@@ -57,8 +97,10 @@ public class Main {
             default:
                 System.out.println("잘 못 입력하셨습니다");
         }
+        return null;
+
     }
-    private static void showMainMenu(Member accountSave, Movie saveMovie, Scanner scanner) {
+    private static Member showMainMenu(Member accountSave, Movie saveMovie, Scanner scanner) {
         Menu.mainMenu(accountSave);
         String input = scanner.nextLine();
         switch (input.charAt(0)) {
@@ -66,7 +108,7 @@ public class Main {
                 // 예매
                 // 영화 목록을 먼저 보여주고,
                 int index = Menu.showMovienameList(scanner);
-                if(index != 0){
+                if(index > -1){
                     saveMovie = Menu.showMovieTimeListandSelect(index,scanner);
                     Menu.movieMenu(saveMovie);
                     System.out.println("좌석을 선택해주세요");
@@ -97,10 +139,11 @@ public class Main {
                 break;
             case '5':
                 accountSave = null;
-                break;
+                return null;
             default:
                 System.out.println("잘못 입력하셨습니다");
         }
+        return accountSave;
     }
 
 }
