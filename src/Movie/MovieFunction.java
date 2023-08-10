@@ -46,7 +46,7 @@ public class MovieFunction {
                 String cancelMovieName = scanner.nextLine();
 
                 if (cancelMovieName.equals()) {
-                    movie.movieseat = new boolean[movie.][movie.col]; // 해당 영화의 좌석을 초기화
+                    movie.movieseat = new boolean[];
                     System.out.println(userid + "님의 예매 취소가 완료되었습니다.");
                     ++movie.movieseatprec; // 상영관의 남은 좌석 수를 다시 추가
                     remoney += moviem; // 고객의 소지금에 환불금을 더해서 리턴
