@@ -28,7 +28,8 @@ public class Menu {
             System.out.println("│           2.영화 예매 취소        │");
             System.out.println("│           3.영화 예매 확인        │");
             System.out.println("│           4.적립금 입금          │");
-            System.out.println("│           4.로그아웃             │");
+            System.out.println("│           5.적립금 사용내역       │");
+            System.out.println("│           6.로그아웃             │");
             System.out.println("│                                │");
             System.out.println("└────────────────────────────────┘");
         }

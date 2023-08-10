@@ -72,12 +72,10 @@ public class MovieFunction {
     public static boolean BuyTiket(Member member, Movie movie,String input) { //티켓 구매시 처리되는 명령
 
         if (member.money >= movie.movieprice) { //고객이 소유한 금액이 영화 티켓의 가격보다 적다면 반환값을 false로 처리함 (아래 else 문을 참고
-
             Tiket tiket = new Tiket();
             seatSelect(movie,input,tiket);
             member.tiketsList.add(tiket);
             movie.movieseatprec --; //입석수 차감
-            //member.haveticket += movie.moviename+','+ input + ','; //고객에게 티켓을 발급한다.
             member.money -= movie.movieprice; //영화의 가격만큼 고객의 금액을 차감한다
             Menu.movieMenu(movie); //입석이 완료된 좌석을 표시함
             return true;
@@ -114,6 +112,15 @@ public class MovieFunction {
     public static boolean seatSelect(Movie movie, String input,Tiket tiket) {
         int rowprec = 0;//행
         int lowprec = 0;//열
+
+        while (input.length() != 2 ||
+                input.charAt(1) <= '0' || input.charAt(1) > '9' ||
+                input.charAt(0) < 'A' || input.charAt(0) > 'F'){
+                System.out.println("좌석을 다시 입력해주세요");
+                Scanner scanner = new Scanner(System.in);
+                input = scanner.nextLine();
+            }
+
 
         if (input.charAt(0) == 'A') {
             lowprec = getCharwithInt(input.charAt(1));
