@@ -4,6 +4,8 @@ import movie.*;
 import user.Member;
 import user.*;
 
+import java.util.*;
+
 public class Menu {
     /**
      * @param member //계정 정보를 전달받아
@@ -43,18 +45,87 @@ public class Menu {
     /**
      * 영화 정보 출력
      */
-    public static void showMovienameList(){
+    public static int showMovienameList(Scanner scanner){
         System.out.println("");
         System.out.println("┌─────────── 상영중인 영화 ───────────┐");
         System.out.println("│                                   │");
+        Set<String> namelist = new HashSet<>();
+        List<String> list = new LinkedList<String>();
+
         if(MakeMovie.list.size() > 0){
-            FindMovie.printMovie();
+
+            int addfaild = 0;
+            //set 컬렉션에 저장된 값을 불러오며 member주소를 가리키게 한다
+            for (int i = 0 ;i<MakeMovie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
+                if(!namelist.add(MakeMovie.list.get(i).moviename)){
+                    addfaild++;
+                }
+            }
+            int i = 1;
+            for (String movieName : namelist) {
+                System.out.println("\t\t" + (i++) + ". " + movieName);
+                list.add(movieName);
+            }
+
         }else{
             System.out.println("\t\t상영중인 영화가 없습니다");
+            return  0;
         }
         System.out.println("│                                   │");
         System.out.println("└───────────────────────────────────┘");
-        System.out.print("영화 선택 ->  ");
+            System.out.print("영화 선택 ->  ");
+            String input = scanner.nextLine();
+            int a = input.charAt(0)-'0';
+
+            for(int i = 0; i < MakeMovie.list.size(); i++)
+            {
+                if(list.get(a-1).equals(MakeMovie.list.get(i).moviename)){
+                    return i;
+                }
+            }
+            return 0;
+
+
+    }
+    public  static  Movie showMovieTimeListandSelect(int input,Scanner scanner){
+
+        if (input < 0 || input >= MakeMovie.list.size()) {
+            System.out.println("올바르지 않은 입력입니다.");
+            return null;
+        }
+        String selectedMovieName = MakeMovie.list.get(input).moviename;
+
+        System.out.println("┌──────── 상영중인 영화의 시간 ───────┐");
+        System.out.println("│                                   │");
+
+        int count = 1;
+        for (Movie movie : MakeMovie.list) {
+            if (selectedMovieName.equals(movie.moviename)) {
+                System.out.println(
+                        count + ". " + movie.movietime + " 남은좌석:" +
+                                movie.movieseatprec + "/" +
+                                movie.movieseatpreset);
+                count++;
+            }
+        }
+
+        System.out.println("│                                   │");
+        System.out.println("└───────────────────────────────────┘");
+        System.out.print("영화 시간 선택 ->  ");
+        int selectedTimeIndex = Integer.parseInt(scanner.nextLine()) - 1;
+
+        count = 0;
+        for (Movie movie : MakeMovie.list) {
+            if (selectedMovieName.equals(movie.moviename)) {
+                if (count == selectedTimeIndex) {
+                    return movie;
+                }
+                count++;
+            }
+        }
+        return null;
+
+
     }
 
     /**
