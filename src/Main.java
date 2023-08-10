@@ -16,7 +16,6 @@ public class Main {
         //테스트용 코드
         //Accountsave = new Member("a", "a");
         Movie SaveMovie = null;
-        Movie movie1 = new Movie("어벤져스", 10000);
         MakeMovie.setMovie(new Movie("엄복동", 8000));
         MakeMovie.setMovie(new Movie("무적콧털 보보보", 8000));
         MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000));
@@ -141,6 +140,7 @@ public class Main {
                 accountSave = null;
                 return null;
             default:
+
                 System.out.println("잘못 입력하셨습니다");
         }
         return accountSave;
