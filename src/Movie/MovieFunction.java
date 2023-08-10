@@ -75,7 +75,7 @@ public class MovieFunction {
 
             Tiket tiket = new Tiket();
             seatSelect(movie,input,tiket);
-            member.list.add(tiket);
+            member.tiketsList.add(tiket);
             movie.movieseatprec --; //입석수 차감
             //member.haveticket += movie.moviename+','+ input + ','; //고객에게 티켓을 발급한다.
             member.money -= movie.movieprice; //영화의 가격만큼 고객의 금액을 차감한다
@@ -150,9 +150,13 @@ public class MovieFunction {
             result1.append(input.charAt(1));
 
             tiket.tiketSeatLabel = result1.toString();
-
+            for(int i = 0; i<MakeMovie.list.size();i++){
+                if(movie.equals(MakeMovie.list.get(i))){
+                    tiket.movieIndex = MakeMovie.list.get(i);
+                }
+            }
             tiket.moviename =movie.moviename;
-            //tiket.movieIndex =
+            tiket.movietime =movie.movietime;
             return true;
         }
     }

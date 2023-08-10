@@ -37,8 +37,11 @@ public class Menu {
     public static void movieTiketprintwithUser(Member member){ /*해당 유저가 가진 티켓의 정보를 출력함*/
         //출력
         //Userinfo.userView(member);
-        for(int i = 0; i<member.list.size();i++){
-            System.out.println(member.list.get(i).moviename+member.list.get(i).tiketSeatLabel);
+        for(int i = 0; i<member.tiketsList.size();i++){
+            System.out.println(
+                    "\t\t"+i+1+"."+member.tiketsList.get(i).moviename+"\t"+
+                            member.tiketsList.get(i).tiketSeatLabel+"좌석\t"+
+                            member.tiketsList.get(i).movietime+"시");
         }
     }
 

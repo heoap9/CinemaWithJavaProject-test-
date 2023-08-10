@@ -11,7 +11,7 @@ public class Member {
     public int money;
     public String haveticket;
 
-    public List<Tiket> list = new LinkedList<Tiket>();
+    public List<Tiket> tiketsList = new LinkedList<Tiket>();
 
 
     public Member(String id, String pw){

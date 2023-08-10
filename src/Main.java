@@ -3,6 +3,7 @@
  **/
 
 import movie.*;
+import tiket.TiketRefund;
 import user.*;
 import menu.*;
 
@@ -121,8 +122,16 @@ public class Main {
                 //상영시간을 누르면 해당 영화의 예매 페이지로 넘어가게 한다
 
                 break;
-            case '2':
-                // 예매 취소
+            case '2': //예매 취소
+                System.out.println("예매 취소할 티켓을 선택해주세요");
+                Menu.movieTiketprintwithUser(accountSave);
+                System.out.println("->");
+                input = scanner.nextLine();
+                int a = input.charAt(0) - '0';
+                TiketRefund.refund(accountSave,a-1);
+
+                // 티켓의 번호를 순차적으로 보여주면서
+                // 해당되는 티켓의 movie 인덱스 번호를 참조하여 찾아가서 초기화 시켜야 한다
                 // ...
                 break;
             case '3':

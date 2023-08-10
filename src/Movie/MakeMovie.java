@@ -13,7 +13,9 @@ public class MakeMovie {
      * @return      영화가 저장됬다면  return 1, 아니라면  return 0
      */
     public static int setMovie(Movie movie){
+
         if(list.add (movie)){
+            List<Movie> list = new LinkedList<Movie>();
             return 1;
         }else{
             return 0;
