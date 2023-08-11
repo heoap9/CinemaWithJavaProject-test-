@@ -13,7 +13,7 @@ public class MakeMember {
      * @return 계정이 저장됬다면  return 1, 아니라면  return 0
      */
     public static boolean setMember(Member member){
-        member.money += 3000;
+        member.setMemberMoney('+',3000,"신규회원 가입 보상");
         if(set.add (member)){
             return true;
         }else{

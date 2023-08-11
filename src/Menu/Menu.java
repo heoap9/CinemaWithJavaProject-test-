@@ -14,24 +14,32 @@ public class Menu {
     public static void mainMenu(Member member){ /*로그인을 했을 경우와 아닌경우를 비교하여 다른 메인화면을 띄운다*/
 
         if(member == null){ //참조된 계정 정보 (main에서 사용되고 있는 계정정보를 입력받아서 다른 분기와, 화면을 제공한다
-            System.out.println("┌─────────── 하이영화관 ───────────┐");
-            System.out.println("│                                │");
-            System.out.println("│           1.로그인              │");
-            System.out.println("│           2.상영중인 영화        │");
-            System.out.println("│           3.종료                │");
-            System.out.println("│                                │");
-            System.out.println("└────────────────────────────────┘");
+            System.out.println("\n" +
+                    "██╗  ██╗██╗ ██████╗ ██╗  ██╗    ████████╗██╗  ██╗███████╗ █████╗ ████████╗███████╗██████╗ \n" +
+                    "██║  ██║██║██╔════╝ ██║  ██║    ╚══██╔══╝██║  ██║██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗\n" +
+                    "███████║██║██║  ███╗███████║       ██║   ███████║█████╗  ███████║   ██║   █████╗  ██████╔╝\n" +
+                    "██╔══██║██║██║   ██║██╔══██║       ██║   ██╔══██║██╔══╝  ██╔══██║   ██║   ██╔══╝  ██╔══██╗\n" +
+                    "██║  ██║██║╚██████╔╝██║  ██║       ██║   ██║  ██║███████╗██║  ██║   ██║   ███████╗██║  ██║\n" +
+                    "╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝       ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝\n" +
+                    "                                                                                          \n");
+            System.out.println("┌───────────────────────────┐");
+            System.out.println("│\t\t\t\t\t\t\t│");
+            System.out.println("│\t\t1.로그인\t\t\t\t│");
+            System.out.println("│\t\t2.상영중인 영화\t\t│");
+            System.out.println("│\t\t3.종료\t\t\t\t│");
+            System.out.println("│\t\t\t\t\t\t\t│");
+            System.out.println("└───────────────────────────┘");
         }else{
-            System.out.println("┌────"+member.id+"님 환영합니다 ───┐");
-            System.out.println("│                                │");
-            System.out.println("│           1.영화 예매            │");
-            System.out.println("│           2.영화 예매 취소        │");
-            System.out.println("│           3.영화 예매 확인        │");
-            System.out.println("│           4.적립금 입금          │");
-            System.out.println("│           5.적립금 사용내역       │");
-            System.out.println("│           6.로그아웃             │");
-            System.out.println("│                                │");
-            System.out.println("└────────────────────────────────┘");
+            System.out.printf("┌──── %4s님, 환영합니다.\t───┐\n", member.id);
+            System.out.println("│\t\t\t\t\t\t\t│");
+            System.out.println("│\t\t1.영화 예매\t\t\t│");
+            System.out.println("│\t\t2.영화 예매 취소\t\t│");
+            System.out.println("│\t\t3.영화 예매 확인\t\t│");
+            System.out.println("│\t\t4.적립금 입금\t\t\t│");
+            System.out.println("│\t\t5.적립금 사용내역\t\t│");
+            System.out.println("│\t\t6.로그 아웃\t\t\t│");
+            System.out.println("│\t\t\t\t\t\t\t│");
+            System.out.println("└───────────────────────────┘");
         }
         System.out.print("메뉴 선택 ->  ");
     }
@@ -40,7 +48,7 @@ public class Menu {
         //Userinfo.userView(member);
         for(int i = 0; i<member.tiketsList.size();i++){
             System.out.println(
-                    "\t\t"+i+1+"."+member.tiketsList.get(i).moviename+"\t"+
+                    "\t\t"+(i+1)+"."+member.tiketsList.get(i).moviename+"\t"+
                             member.tiketsList.get(i).tiketSeatLabel+"좌석\t"+
                             member.tiketsList.get(i).movietime+"시");
         }
@@ -52,7 +60,7 @@ public class Menu {
     public static int showMovienameList(Scanner scanner){
         System.out.println("");
         System.out.println("┌─────────── 상영중인 영화 ───────────┐");
-        System.out.println("│                                   │");
+        System.out.println("│\t\t\t\t\t\t\t\t\t│");
         Set<String> namelist = new HashSet<>();
         List<String> list = new LinkedList<String>();
 
@@ -75,7 +83,7 @@ public class Menu {
             System.out.println("\t\t상영중인 영화가 없습니다");
             return  0;
         }
-        System.out.println("│                                   │");
+        System.out.println("│\t\t\t\t\t\t\t\t\t│");
         System.out.println("└───────────────────────────────────┘");
             System.out.print("영화 선택 ->  ");
             String input = scanner.nextLine();
@@ -100,20 +108,20 @@ public class Menu {
         String selectedMovieName = MakeMovie.list.get(input).moviename;
 
         System.out.println("┌──────── 상영중인 영화의 시간 ───────┐");
-        System.out.println("│                                   │");
+        System.out.println("│\t\t\t\t\t\t\t\t\t│");
 
         int count = 1;
         for (Movie movie : MakeMovie.list) {
             if (selectedMovieName.equals(movie.moviename)) {
                 System.out.println(
-                        count + ". " + movie.movietime + " 남은좌석:" +
+                        "\t" + count + ". " + movie.movietime + " 남은좌석:" +
                                 movie.movieseatprec + "/" +
                                 movie.movieseatpreset);
                 count++;
             }
         }
 
-        System.out.println("│                                   │");
+        System.out.println("│\t\t\t\t\t\t\t\t\t│");
         System.out.println("└───────────────────────────────────┘");
         System.out.print("영화 시간 선택 ->  ");
         int selectedTimeIndex = Integer.parseInt(scanner.nextLine()) - 1;

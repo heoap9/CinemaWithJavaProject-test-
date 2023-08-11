@@ -34,9 +34,6 @@ public class FindMovie {
 
         return MakeMovie.list.get(index);
     }
-    //public static Movie allFindMovie(Movie movie){
-        
-    //}
 
     }
 

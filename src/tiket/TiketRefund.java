@@ -9,7 +9,7 @@ public class TiketRefund {
         Movie movie = tiket.movieIndex;
         movie.movieseat[tiket.row][tiket.low] = false;
         movie.movieseatprec++;
-        member.money -= movie.movieprice;
+        member.setMemberMoney('+',movie.movieprice,"영화 예매 취소\t");
         member.tiketsList.remove(a);
         System.out.println("환불완료오!");
     }

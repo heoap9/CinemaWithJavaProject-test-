@@ -43,6 +43,26 @@ public class Member {
         return false;
     }
 
+    public void setMemberMoney(char op,int money,String useing){ //입출금 내역을 판단하여,사용처와 사용내역을 저장한다
+        int i = 0;
+        if(op == '+'){
+            this.moneyHistory.add(useing+"\t"+"\t입금"+money+"원");
+            this.money += money;
+        }
+        if(op == '-'){
+            this.moneyHistory.add(useing+"출금"+money+"원");
+            this.money -= money;
+        }
+    }
+
+    public void printMemberMoneyHistory(){
+        List list = this.moneyHistory;
+        for(int i = 0; i< list.size(); i++){
+            System.out.println( (i+1) +":" +list.get(i) );
+        }
+        System.out.println("현재"+this.id+"님의 보유 금액은 "+this.money+"원 입니다");
+    }
+
 
 
 

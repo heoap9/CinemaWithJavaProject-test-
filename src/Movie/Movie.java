@@ -12,6 +12,9 @@ public class Movie {
     public int movieseatpreset;
     public int movieseatprec;
 
+    int numRows; // 올림을 위한 +9
+    final int numCols = 10;
+
 
     //참조 타입
 
@@ -21,7 +24,8 @@ public class Movie {
         this.movieprice = 10000;
         this.movieseatpreset = 60; // 변수 이름 수정
         this.movieseatprec = movieseatpreset;
-        this.movieseat = new boolean[movieseatpreset /10][10]; // 배열 생성 및 초기화 추가
+        this.numRows = (movieseatpreset + 9) / 10;
+        this.movieseat = new boolean[numRows][numCols]; // 배열 생성 및 초기화 추가
 
     }
 
@@ -31,7 +35,8 @@ public class Movie {
         this.movietime = "09:00";
         this.movieseatpreset = 60; // 변수 이름 수정
         this.movieseatprec = movieseatpreset;
-        this.movieseat = new boolean[movieseatpreset /10][10]; // 배열 생성 및 초기화 추가
+        this.numRows = (movieseatpreset + 9) / 10;
+        this.movieseat = new boolean[numRows][numCols]; // 배열 생성 및 초기화 추가
     }
     public Movie(String moviename, int movieprice,String movietime) {
         this.moviename = moviename;
@@ -39,7 +44,8 @@ public class Movie {
         this.movietime = movietime;
         this.movieseatpreset = 60; // 변수 이름 수정
         this.movieseatprec = movieseatpreset;
-        this.movieseat = new boolean[movieseatpreset /10][10]; // 배열 생성 및 초기화 추가
+        this.numRows = (movieseatpreset + 9) / 10;
+        this.movieseat = new boolean[numRows][numCols]; // 배열 생성 및 초기화 추가
     }
 
     @Override
