@@ -1,5 +1,8 @@
 package movie;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * 영화 정보를 저장하기 위한 클래스!
  *  저장되는 정보는 영화이름,시간,가격,좌석,좌석에 배정된 초기값,남은 입석수 등이 제공된다
@@ -15,6 +18,9 @@ public class Movie {
     int numRows; // 올림을 위한 +9
     final int numCols = 10;
 
+    public static List<Movie> list = new LinkedList<Movie>();
+
+
 
     //참조 타입
 
@@ -22,7 +28,7 @@ public class Movie {
         this.moviename = moviename;
         this.movietime = "09:00";
         this.movieprice = 10000;
-        this.movieseatpreset = 60; // 변수 이름 수정
+        this.movieseatpreset = 70; // 변수 이름 수정
         this.movieseatprec = movieseatpreset;
         this.numRows = (movieseatpreset + 9) / 10;
         this.movieseat = new boolean[numRows][numCols]; // 배열 생성 및 초기화 추가
@@ -63,6 +69,17 @@ public class Movie {
         }
         return false;
     }
+
+    public static int setMovie(Movie movie) {
+
+        if (list.add(movie)) {
+            List<Movie> list = new LinkedList<Movie>();
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 
 
 

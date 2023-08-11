@@ -45,7 +45,6 @@ public class Menu {
     }
     public static void movieTiketprintwithUser(Member member){ /*해당 유저가 가진 티켓의 정보를 출력함*/
         //출력
-        //Userinfo.userView(member);
         for(int i = 0; i<member.tiketsList.size();i++){
             System.out.println(
                     "\t\t"+(i+1)+"."+member.tiketsList.get(i).moviename+"\t"+
@@ -64,12 +63,12 @@ public class Menu {
         Set<String> namelist = new HashSet<>();
         List<String> list = new LinkedList<String>();
 
-        if(MakeMovie.list.size() > 0){
+        if(Movie.list.size() > 0){
 
             int addfaild = 0;
             //set 컬렉션에 저장된 값을 불러오며 member주소를 가리키게 한다
-            for (int i = 0 ;i<MakeMovie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
-                if(!namelist.add(MakeMovie.list.get(i).moviename)){
+            for (int i = 0 ;i<Movie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
+                if(!namelist.add(Movie.list.get(i).moviename)){
                     addfaild++;
                 }
             }
@@ -89,9 +88,9 @@ public class Menu {
             String input = scanner.nextLine();
             int a = input.charAt(0)-'0';
 
-            for(int i = 0; i < MakeMovie.list.size(); i++)
+            for(int i = 0; i < Movie.list.size(); i++)
             {
-                if(list.get(a-1).equals(MakeMovie.list.get(i).moviename)){
+                if(list.get(a-1).equals(Movie.list.get(i).moviename)){
                     return i;
                 }
             }
@@ -101,17 +100,17 @@ public class Menu {
     }
     public  static  Movie showMovieTimeListandSelect(int input,Scanner scanner){
 
-        if (input < 0 || input >= MakeMovie.list.size()) {
+        if (input < 0 || input >= Movie.list.size()) {
             System.out.println("올바르지 않은 입력입니다.");
             return null;
         }
-        String selectedMovieName = MakeMovie.list.get(input).moviename;
+        String selectedMovieName = Movie.list.get(input).moviename;
 
         System.out.println("┌──────── 상영중인 영화의 시간 ───────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t│");
 
         int count = 1;
-        for (Movie movie : MakeMovie.list) {
+        for (Movie movie : Movie.list) {
             if (selectedMovieName.equals(movie.moviename)) {
                 System.out.println(
                         "\t" + count + ". " + movie.movietime + " 남은좌석:" +
@@ -127,7 +126,7 @@ public class Menu {
         int selectedTimeIndex = Integer.parseInt(scanner.nextLine()) - 1;
 
         count = 0;
-        for (Movie movie : MakeMovie.list) {
+        for (Movie movie : Movie.list) {
             if (selectedMovieName.equals(movie.moviename)) {
                 if (count == selectedTimeIndex) {
                     return movie;
@@ -164,9 +163,8 @@ public class Menu {
             System.out.printf("\t"+(i+1));
         }
         System.out.println();
-        char alpha[] = {'A','B','C','D','E','F'}; //행의 값을 출력함
         for (int i = 0; i < movie.movieseat.length; i++) { //좌석의 입석수를 확인하며 콘솔창에 입석을 표기함
-            System.out.print(alpha[i]);
+            System.out.printf("%c",65+i); //해당되는 열의 알파벳을 표시함
             for (int j = 0; j < movie.movieseat[i].length; j++) {
 
                 if (!movie.movieseat[i][j]) {

@@ -3,7 +3,7 @@
  **/
 
 import movie.*;
-import tiket.TiketRefund;
+import tiket.TiketFunction;
 import user.*;
 import menu.*;
 
@@ -14,15 +14,14 @@ public class Main {
     public static void main(String[] args) {
         Member Accountsave = null; //계정 정보 저장을 위한 변수
         // 테스트 코드
-        Accountsave = new Member("a","a");
 
         Movie SaveMovie = null; //영화 정보 저장을 위한 변수
 
-        MakeMovie.setMovie(new Movie("엄복동"));
-        MakeMovie.setMovie(new Movie("엄복동", 8000));
-        MakeMovie.setMovie(new Movie("무적콧털 보보보", 8000));
-        MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000));
-        MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000, "08:00"));
+        Movie.setMovie(new Movie("엄복동"));
+        Movie.setMovie(new Movie("엄복동", 8000));
+        Movie.setMovie(new Movie("무적콧털 보보보", 8000));
+        Movie.setMovie(new Movie("녹색전차 해모수", 8000));
+        Movie.setMovie(new Movie("녹색전차 해모수", 8000, "08:00"));
 
         String id;
         String pw;
@@ -75,6 +74,8 @@ public class Main {
                         if (MakeMember.setMember(new Member(id, pw))) {
                             System.out.println("회원가입을 축하드립니다!");
                             System.out.println("회원가입 축하금으로 3000포인트를 입금해드립니다");
+                        }else{
+                            System.out.println("이미 존재하는 회원의 id이므로 회원가입에 실패했습니다");
                         }
                         break;
                     case '3':
@@ -117,7 +118,7 @@ public class Main {
                     Menu.movieMenu(saveMovie);
                     System.out.println("좌석을 선택해주세요");
                     input = scanner.nextLine();
-                    MovieFunction.BuyTiket(accountSave, saveMovie, input);
+                    TiketFunction.BuyTiket(accountSave, saveMovie, input);
                     break;
                 }
                 else{
@@ -132,7 +133,7 @@ public class Main {
                 System.out.println("->");
                 input = scanner.nextLine();
                 int a = input.charAt(0) - '0';
-                TiketRefund.refund(accountSave,a-1);
+                TiketFunction.refund(accountSave,a-1);
 
                 // 티켓의 번호를 순차적으로 보여주면서
                 // 해당되는 티켓의 movie 인덱스 번호를 참조하여 찾아가서 초기화 시켜야 한다
@@ -148,7 +149,7 @@ public class Main {
                 System.out.println("얼마를 입금하시겠습니까?");
                 System.out.println("->");
                 input = scanner.nextLine();
-                MemberFunction.MemberMoneyInput(accountSave, input);
+                Member.MemberMoneyInput(accountSave, input);
                 break;
             case '5': //입출금 내역 표시
                 accountSave.printMemberMoneyHistory();
