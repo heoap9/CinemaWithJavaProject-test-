@@ -17,6 +17,8 @@ public class Main {
         Accountsave = new Member("a","a");
 
         Movie SaveMovie = null; //영화 정보 저장을 위한 변수
+
+        MakeMovie.setMovie(new Movie("엄복동"));
         MakeMovie.setMovie(new Movie("엄복동", 8000));
         MakeMovie.setMovie(new Movie("무적콧털 보보보", 8000));
         MakeMovie.setMovie(new Movie("녹색전차 해모수", 8000));
