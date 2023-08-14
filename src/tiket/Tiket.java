@@ -14,17 +14,16 @@ public class Tiket {
     public Movie movieIndex; //Movie인덱스를 가져옴
     public String movietime;
 
+    public Tiket() {
+
+    }
+
     public Tiket(String tiketSeatLabel, int row, int low, String movie, Movie movieIndex){
         this.tiketSeatLabel = tiketSeatLabel;
         this.low = low;
         this.row = row;
         this.moviename =movie;
         this.movieIndex =movieIndex;
-
-    }
-
-    public Tiket() {
-
     }
 
     public static boolean setTiket(Member member, String tiketSeatLabel, int row, int low, String movie, Movie movieIndex){

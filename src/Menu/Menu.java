@@ -2,14 +2,13 @@ package menu;
 
 import movie.*;
 import user.Member;
-import user.*;
 
 import java.util.*;
 
 public class Menu {
     /**
      * @param member //계정 정보를 전달받아
-     *               //로그인 및 비로그인 시 예매 정보를 출력한다
+     *               //로그인 및 비로그인 시의 메인화면을 출력한다
      */
     public static void mainMenu(Member member){ /*로그인을 했을 경우와 아닌경우를 비교하여 다른 메인화면을 띄운다*/
 
@@ -43,6 +42,10 @@ public class Menu {
         }
         System.out.print("메뉴 선택 ->  ");
     }
+
+    /**
+     * @param member 해당 유저가 가지고 있는 티켓의 정보를 모두 출력한다
+     */
     public static void movieTiketprintwithUser(Member member){ /*해당 유저가 가진 티켓의 정보를 출력함*/
         //출력
         for(int i = 0; i<member.tiketsList.size();i++){
@@ -54,7 +57,7 @@ public class Menu {
     }
 
     /**
-     * 영화 정보 출력
+     * 저장된 영화의 정보를 출력한다
      */
     public static int showMovienameList(Scanner scanner){
         System.out.println("");
@@ -63,12 +66,12 @@ public class Menu {
         Set<String> namelist = new HashSet<>();
         List<String> list = new LinkedList<String>();
 
-        if(Movie.list.size() > 0){
+        if(MovieCommonUsed.list.size() > 0){
 
             int addfaild = 0;
             //set 컬렉션에 저장된 값을 불러오며 member주소를 가리키게 한다
-            for (int i = 0 ;i<Movie.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
-                if(!namelist.add(Movie.list.get(i).moviename)){
+            for (int i = 0 ;i<MovieCommonUsed.list.size();i++) { //컬렉션에 저장된 정보가 존재할때까지 확인한다
+                if(!namelist.add(MovieCommonUsed.list.get(i).moviename)){
                     addfaild++;
                 }
             }
@@ -88,9 +91,9 @@ public class Menu {
             String input = scanner.nextLine();
             int a = input.charAt(0)-'0';
 
-            for(int i = 0; i < Movie.list.size(); i++)
+            for(int i = 0; i < MovieCommonUsed.list.size(); i++)
             {
-                if(list.get(a-1).equals(Movie.list.get(i).moviename)){
+                if(list.get(a-1).equals(MovieCommonUsed.list.get(i).moviename)){
                     return i;
                 }
             }
@@ -98,19 +101,19 @@ public class Menu {
 
 
     }
-    public  static  Movie showMovieTimeListandSelect(int input,Scanner scanner){
+    public  static Movie showMovieTimeListandSelect(int input, Scanner scanner){
 
-        if (input < 0 || input >= Movie.list.size()) {
+        if (input < 0 || input >= MovieCommonUsed.list.size()) {
             System.out.println("올바르지 않은 입력입니다.");
             return null;
         }
-        String selectedMovieName = Movie.list.get(input).moviename;
+        String selectedMovieName = MovieCommonUsed.list.get(input).moviename;
 
         System.out.println("┌──────── 상영중인 영화의 시간 ───────┐");
         System.out.println("│\t\t\t\t\t\t\t\t\t│");
 
         int count = 1;
-        for (Movie movie : Movie.list) {
+        for (Movie movie : MovieCommonUsed.list) {
             if (selectedMovieName.equals(movie.moviename)) {
                 System.out.println(
                         "\t" + count + ". " + movie.movietime + " 남은좌석:" +
@@ -126,7 +129,7 @@ public class Menu {
         int selectedTimeIndex = Integer.parseInt(scanner.nextLine()) - 1;
 
         count = 0;
-        for (Movie movie : Movie.list) {
+        for (Movie movie : MovieCommonUsed.list) {
             if (selectedMovieName.equals(movie.moviename)) {
                 if (count == selectedTimeIndex) {
                     return movie;
@@ -135,7 +138,6 @@ public class Menu {
             }
         }
         return null;
-
 
     }
 
