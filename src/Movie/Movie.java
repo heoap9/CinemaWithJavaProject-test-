@@ -13,17 +13,22 @@ public class Movie {
     public int movieseatprec;
 
     int numRows; // 올림을 위한 +9
-    final int numCols = 10;
+    int numCols;
 
     //참조 타입
     public Movie(String moviename, int movieprice,String movietime,int movieseatpreset) {
+
+        this.numCols = setColums(movieseatpreset);
+        this.numRows = setRowls(movieseatpreset,numCols);
+
         this.moviename = moviename;
         this.movieprice = movieprice;
         this.movietime = movietime;
-        this.movieseatpreset = movieseatpreset; // 변수 이름 수정
+        this.movieseatpreset = numCols * numRows;
         this.movieseatprec = this.movieseatpreset;
-        this.numRows = (movieseatpreset + 9) / 10;
-        this.movieseat = new boolean[numRows][numCols]; // 배열 생성 및 초기화 추가
+
+        this.movieseat = new boolean[this.numRows][this.numCols]; // 배열 생성 및 초기화 추가
+
     }
 
     @Override
@@ -41,5 +46,14 @@ public class Movie {
         }
         return false;
     }
+
+    public static int setColums(int seatCount){
+        return (int) Math.ceil(Math.sqrt(seatCount));
+    }
+    public static int setRowls(int seatCount,int numColumns) {
+        return  (int) Math.ceil((double) seatCount / numColumns);
+
+    }
+
 
 }
